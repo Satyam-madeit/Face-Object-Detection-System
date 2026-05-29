@@ -46,7 +46,7 @@ while True:
                 scale_x = frame.shape[1] / resized.shape[1]
                 scale_y = frame.shape[0] / resized.shape[0]
                 detections.append((int(x * scale_x), int(y * scale_y), int(64 * scale_x), int(64 * scale_y)))
-    rects, weights = cv2.groupRectangles(detections + detections, groupThreshold = 4, eps=0.3)  
+    rects, weights = cv2.groupRectangles(detections + detections, groupThreshold = 2, eps=0.1)  
     for (x, y, w, h) in rects:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)     
     cv2.imshow('Webcam', frame)
